@@ -1,0 +1,170 @@
+body {
+    background-color: #fdf5f6;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.contenedor {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    z-index: 20;
+    position: relative;
+}
+
+h1 {
+    color: #ff6b81;
+    font-size: 32px;
+    margin-top: 0;
+}
+
+p {
+    color: #4a4a4a;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.elogios {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px dashed #ffb8c6;
+}
+
+.destacado {
+    color: #ff4757;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#animaciones-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.flor, .abeja {
+    position: absolute;
+    opacity: 0.9;
+}
+
+#jardin-base {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20vh;
+    background: linear-gradient(to top, #2e8b57 10%, transparent);
+    z-index: 3;
+    pointer-events: none;
+}
+
+#jardin-inferior {
+    position: fixed;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 45vh;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.flor-jardin {
+    position: absolute;
+}
+
+.girasol-ramo.grande { width: 100px; height: 100px; z-index: 7; }
+.girasol-ramo.medio { width: 75px; height: 75px; z-index: 5; opacity: 0.95; }
+.girasol-ramo.pequeno { width: 50px; height: 50px; z-index: 3; opacity: 0.85; filter: blur(0.5px); }
+
+.margarita-ramo.grande { width: 90px; height: 90px; z-index: 7; }
+.margarita-ramo.medio { width: 65px; height: 65px; z-index: 5; opacity: 0.95; }
+.margarita-ramo.pequeno { width: 45px; height: 45px; z-index: 3; opacity: 0.85; filter: blur(0.5px); }
+
+.ramillo.grande { width: 90px; height: 90px; z-index: 6; }
+.ramillo.medio { width: 65px; height: 65px; z-index: 4; }
+.ramillo.pequeno { width: 45px; height: 45px; z-index: 2; opacity: 0.8; filter: blur(0.5px); }
+
+.abeja {
+    position: absolute;
+    left: -15%;
+}
+
+@keyframes balanceo-lento {
+    0% { transform: rotate(-3deg); }
+    100% { transform: rotate(3deg); }
+}
+
+@keyframes balanceo-medio {
+    0% { transform: rotate(-5deg); }
+    100% { transform: rotate(5deg); }
+}
+
+@keyframes balanceo-rapido {
+    0% { transform: rotate(-7deg); }
+    100% { transform: rotate(7deg); }
+}
+
+@keyframes volar-erratico-1 {
+    0% { left: -15%; transform: translateY(0px) scaleX(-1); }
+    15% { transform: translateY(-80px) scaleX(-1); }
+    30% { transform: translateY(50px) scaleX(-1); }
+    45% { transform: translateY(-60px) scaleX(-1); }
+    60% { transform: translateY(70px) scaleX(-1); }
+    75% { transform: translateY(-40px) scaleX(-1); }
+    90% { transform: translateY(30px) scaleX(-1); }
+    100% { left: 115%; transform: translateY(0px) scaleX(-1); }
+}
+
+@keyframes volar-erratico-2 {
+    0% { left: -15%; transform: translateY(0px) scaleX(-1); }
+    10% { transform: translateY(60px) scaleX(-1); }
+    25% { transform: translateY(-70px) scaleX(-1); }
+    40% { transform: translateY(40px) scaleX(-1); }
+    55% { transform: translateY(-50px) scaleX(-1); }
+    70% { transform: translateY(80px) scaleX(-1); }
+    85% { transform: translateY(-30px) scaleX(-1); }
+    100% { left: 115%; transform: translateY(0px) scaleX(-1); }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 26px; }
+    p { font-size: 16px; }
+    .contenedor { padding: 30px; width: 85%; }
+    .destacado { font-size: 18px; }
+    
+    #jardin-base { height: 25vh; background: linear-gradient(to top, #2e8b57 20%, transparent); }
+    #jardin-inferior { height: 35vh; bottom: 0; }
+    
+    .girasol-ramo.grande { width: 80px; height: 80px; }
+    .girasol-ramo.medio { width: 60px; height: 60px; }
+    .girasol-ramo.pequeno { width: 40px; height: 40px; }
+    
+    .margarita-ramo.grande { width: 70px; height: 70px; }
+    .margarita-ramo.medio { width: 50px; height: 50px; }
+    .margarita-ramo.pequeno { width: 35px; height: 35px; }
+    
+    .ramillo.grande { width: 70px; height: 70px; }
+    .ramillo.medio { width: 50px; height: 50px; }
+    .ramillo.pequeno { width: 35px; height: 35px; }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 22px; }
+    p { font-size: 15px; }
+    .contenedor { padding: 20px; width: 80%; margin-bottom: 15vh; }
+}
