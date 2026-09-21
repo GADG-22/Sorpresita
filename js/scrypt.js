@@ -101,3 +101,31 @@ for (let i = 0; i < cantidadAbejas; i++) {
     
     container.appendChild(div);
 }
+const audio = document.getElementById('musicaFondo');
+const botonMusica = document.getElementById('control-musica');
+
+// Baja un poco el volumen (0.3 es el 30%) para que no asuste al abrir
+audio.volume = 0.3; 
+
+// Intentar reproducir automaticamente
+audio.play().then(() => {
+    // Si se reproduce correctamente sin ayuda, ocultar el boton
+    botonMusica.classList.add('oculto');
+}).catch(error => {
+    // Si el navegador bloquea el autoplay, el boton queda visible
+    console.log("Autoplay bloqueado. Esperando interaccion.");
+});
+
+// Reproducir si hace click en el boton
+botonMusica.addEventListener('click', () => {
+    audio.play();
+    botonMusica.classList.add('oculto');
+});
+
+// Reproducir si toca cualquier parte de la pantalla (truco para celulares)
+document.body.addEventListener('click', () => {
+    if (audio.paused) {
+        audio.play();
+        botonMusica.classList.add('oculto');
+    }
+}, { once: true });
