@@ -1,4 +1,5 @@
 const container = document.getElementById('animaciones-container');
+const carta = document.querySelector('.contenedor');
 
 const svgRamillo = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 60 L 40 90 M50 60 L 60 90 M50 60 L 50 90" stroke="#228b22" stroke-width="4"/><circle cx="40" cy="40" r="12" fill="#fff" stroke="#eee" stroke-width="2"/><circle cx="60" cy="40" r="12" fill="#fff" stroke="#eee" stroke-width="2"/><circle cx="50" cy="55" r="12" fill="#fff" stroke="#eee" stroke-width="2"/><circle cx="30" cy="50" r="12" fill="#fff" stroke="#eee" stroke-width="2"/><circle cx="70" cy="50" r="12" fill="#fff" stroke="#eee" stroke-width="2"/></svg>';
 
@@ -7,6 +8,14 @@ const svgGirasolRamo = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000
 const svgMargaritaRamo = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 50 L 50 90 M50 60 L 25 90 M50 60 L 75 90" stroke="#228b22" stroke-width="4"/><g transform="translate(0, -10)"><circle cx="50" cy="25" r="10" fill="#fff"/><circle cx="50" cy="55" r="10" fill="#fff"/><circle cx="35" cy="40" r="10" fill="#fff"/><circle cx="65" cy="40" r="10" fill="#fff"/><circle cx="39" cy="29" r="10" fill="#fff"/><circle cx="61" cy="29" r="10" fill="#fff"/><circle cx="39" cy="51" r="10" fill="#fff"/><circle cx="61" cy="51" r="10" fill="#fff"/><circle cx="50" cy="40" r="12" fill="#ffd700"/></g><g transform="translate(-25, 10) scale(0.8)"><circle cx="50" cy="25" r="10" fill="#fff"/><circle cx="50" cy="55" r="10" fill="#fff"/><circle cx="35" cy="40" r="10" fill="#fff"/><circle cx="65" cy="40" r="10" fill="#fff"/><circle cx="39" cy="29" r="10" fill="#fff"/><circle cx="61" cy="29" r="10" fill="#fff"/><circle cx="39" cy="51" r="10" fill="#fff"/><circle cx="61" cy="51" r="10" fill="#fff"/><circle cx="50" cy="40" r="12" fill="#ffd700"/></g><g transform="translate(25, 10) scale(0.8)"><circle cx="50" cy="25" r="10" fill="#fff"/><circle cx="50" cy="55" r="10" fill="#fff"/><circle cx="35" cy="40" r="10" fill="#fff"/><circle cx="65" cy="40" r="10" fill="#fff"/><circle cx="39" cy="29" r="10" fill="#fff"/><circle cx="61" cy="29" r="10" fill="#fff"/><circle cx="39" cy="51" r="10" fill="#fff"/><circle cx="61" cy="51" r="10" fill="#fff"/><circle cx="50" cy="40" r="12" fill="#ffd700"/></g></svg>';
 
 const svgAbeja = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="50" rx="25" ry="18" fill="#e1b12c"/><path d="M40 32 L40 68 M60 32 L60 68" stroke="#000" stroke-width="6"/><circle cx="65" cy="45" r="3" fill="#000"/><path d="M45 32 C 35 10, 15 15, 40 32" fill="#add8e6" opacity="0.7"/><path d="M55 32 C 65 10, 85 15, 55 32" fill="#add8e6" opacity="0.7"/></svg>';
+
+const posicionesCarta = ['esquina-1', 'esquina-2', 'esquina-3', 'esquina-4', 'borde-1', 'borde-2'];
+posicionesCarta.forEach((pos, index) => {
+    const div = document.createElement('div');
+    div.className = `flor flor-carta ${pos}`;
+    div.innerHTML = index % 2 === 0 ? svgGirasolRamo : svgMargaritaRamo;
+    carta.appendChild(div);
+});
 
 const baseCesped = document.createElement('div');
 baseCesped.id = 'jardin-base';
@@ -19,9 +28,9 @@ container.appendChild(jardin);
 const cantidadFlores = 120;
 
 const tiposConPeso = [
-    { clase: 'ramillo', svg: svgRamillo, peso: 4 },
-    { clase: 'margarita-ramo', svg: svgMargaritaRamo, peso: 4 },
-    { clase: 'girasol-ramo', svg: svgGirasolRamo, peso: 1 }
+    { clase: 'ramillo', svg: svgRamillo, peso: 2 },
+    { clase: 'margarita-ramo', svg: svgMargaritaRamo, peso: 2 },
+    { clase: 'girasol-ramo', svg: svgGirasolRamo, peso: 5 }
 ];
 
 let opciones = [];
@@ -42,7 +51,7 @@ for (let i = 0; i < cantidadFlores; i++) {
     const animacion = animaciones[Math.floor(Math.random() * animaciones.length)];
     
     if (tipo.clase === 'girasol-ramo') {
-        tamanio = 'pequeno';
+        tamanio = Math.random() > 0.3 ? 'grande' : 'medio';
     }
     
     div.className = `flor flor-jardin ${tipo.clase} ${tamanio}`;

@@ -62,6 +62,21 @@ p {
     opacity: 0.9;
 }
 
+.flor-carta {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    z-index: 25;
+    animation: balanceo-lento 3s infinite alternate ease-in-out;
+}
+
+.esquina-1 { top: -25px; left: -25px; }
+.esquina-2 { top: -25px; right: -25px; }
+.esquina-3 { bottom: -25px; left: -25px; }
+.esquina-4 { bottom: -25px; right: -25px; }
+.borde-1 { top: 50%; left: -30px; }
+.borde-2 { top: 50%; right: -30px; }
+
 #jardin-base {
     position: fixed;
     bottom: 0;
@@ -87,7 +102,7 @@ p {
     position: absolute;
 }
 
-.girasol-ramo.grande { width: 100px; height: 100px; z-index: 7; }
+.girasol-ramo.grande { width: 100px; height: 100px; z-index: 7; opacity: 1; }
 .girasol-ramo.medio { width: 75px; height: 75px; z-index: 5; opacity: 0.95; }
 .girasol-ramo.pequeno { width: 50px; height: 50px; z-index: 3; opacity: 0.85; filter: blur(0.5px); }
 
@@ -149,6 +164,10 @@ p {
     
     #jardin-base { height: 25vh; background: linear-gradient(to top, #2e8b57 20%, transparent); }
     #jardin-inferior { height: 35vh; bottom: 0; }
+    
+    .flor-carta { width: 45px; height: 45px; }
+    .borde-1 { left: -20px; }
+    .borde-2 { right: -20px; }
     
     .girasol-ramo.grande { width: 80px; height: 80px; }
     .girasol-ramo.medio { width: 60px; height: 60px; }
